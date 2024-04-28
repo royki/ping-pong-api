@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ping-pong:v1.0.0
+    container_name: app
+    command: npm start
+    ports:
+      - 3000:3000
