@@ -1,6 +1,6 @@
 # DEVOPS Kubernetes
 
-- Architecture
+- [Architecture](https://github.com/royki/ping-pong-api/blob/master/infra/architecture.png)
   - AWS EKS
   - Multi AZ
   - Monitoring
@@ -17,9 +17,9 @@
 ## Assignment Requirements
 
 - Docker setup for the service [ping-pong-api](https://github.com/royki/ping-pong-api)
-  - ✅ Dockerfile
-  - ✅ CI pipeline to create docker image
-  - ✅ Docker Image: `royki/ping-pong:v1.0.0`
+  - ✅ [Dockerfile](https://github.com/royki/ping-pong-api/blob/master/Dockerfile)
+  - ✅ [CI pipeline to create docker image](https://github.com/royki/ping-pong-api/blob/master/.github/workflows/docker-push.yaml)
+  - ✅ [Docker Image](https://hub.docker.com/repository/docker/royki/ping-pong/general): `royki/ping-pong:v1.0.0`
 - ✅ Kubernetes cluster setup (locally)
   - Start minikube cluster: `minikube start`
   - Enable Ingress: `minikube addons enable ingress`
@@ -49,3 +49,11 @@
 - Other features
   - ✅ Auto scaling
   - ✅ High Availability
+
+### Network security
+
+- VPC and Subnets
+- Security Groups
+- Network Policies
+- Ingress Controllers
+- DDoS Protection
