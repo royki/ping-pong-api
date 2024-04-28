@@ -1,0 +1,42 @@
+{{- if .Values.userRole.create -}}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: {{ include "ping-pong-api-helm.fullname" . }}-read
+  namespace: {{ .Values.userRole.nameSpace }}
+  labels:
+    {{- include "ping-pong-api-helm.labels" . | nindent 4 }}
+  {{- with .Values.userRole.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+subjects:
+- kind: User
+  name: {{ include "ping-pong-api-helm.serviceAccountName" . }}
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: {{ include "ping-pong-api-helm.fullname" . }}-read
+  apiGroup: rbac.authorization.k8s.io
+{{- end }}
+---
+{{- if .Values.clusterRole.create -}}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ include "ping-pong-api-helm.fullname" . }}-read
+  labels:
+    {{- include "ping-pong-api-helm.labels" . | nindent 4 }}
+  {{- with .Values.clusterRole.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+subjects:
+- kind: User
+  name: {{ include "ping-pong-api-helm.serviceAccountName" . }}
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: {{ include "ping-pong-api-helm.fullname" . }}-read
+  apiGroup: rbac.authorization.k8s.io
+{{- end }}
